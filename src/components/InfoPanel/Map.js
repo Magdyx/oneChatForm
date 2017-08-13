@@ -24,8 +24,8 @@ export default class Map extends Component {
             },
             edittable: false
         }
-        x = props.lng;
-        y = props.lat;
+        x = props.lat;
+        y = props.lng;
         this.handleMapClicked = this.handleMapClicked.bind(this);
     }
 
