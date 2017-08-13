@@ -64,6 +64,12 @@ export default class EditForm extends React.Component {
         });
     }
 
+    isEmpty(str){
+        if(str === '')
+            return true;
+        return false;
+    }
+
     handlePositionChanged(x, y){
         const {name, password, location} = this.state.branch;
         console.log(x, y);
@@ -88,6 +94,9 @@ export default class EditForm extends React.Component {
     refreshData(e) {
         e.preventDefault();
         const {name, password, location, position} = this.state.branch;
+        if(this.isEmpty(name) || this.isEmpty(password) || this.isEmpty(location)) {
+            return;
+        }
         this.setState({old_branch: this.state.branch});
         this.props.onChangeBranchInfo(name, password, location, position);
         this.setState({ show: false});
@@ -97,7 +106,7 @@ export default class EditForm extends React.Component {
         let close = () => this.setState({ show: false });
         const {name, password, location, position} = this.state.branch;
         return (
-            <div className="modal-container" style={{height: 200}}>
+            <div className="modal-container" style={{ height: 200 }}>
                 <Button
                     color="primary"
                     variant="fab"
