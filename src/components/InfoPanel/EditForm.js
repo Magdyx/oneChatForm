@@ -92,7 +92,6 @@ export default class EditForm extends React.Component {
         return (
             <div className="modal-container" style={{height: 200}}>
                 <Button
-                    cursor="crosshair"
                     color="primary"
                     variant="fab"
                     size="small"
@@ -147,7 +146,7 @@ export default class EditForm extends React.Component {
                             />
                         </Form>
 
-                        <div style={{width: '550px', height: '230px' ,cursor:"crosshair" }}>
+                        <div style={{width: '550px', height: '230px' }}>
                             <Map
 
                                 width='550'
