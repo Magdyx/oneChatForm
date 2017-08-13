@@ -1,8 +1,8 @@
-#Editable info Form
+# Editable info Form
 
 import InfoForm from path './components/InfoPanel' to get started
 
-##Notice:
+## Notice:
 Don't forget to include the following lines in your index.html file
 
 ```
@@ -12,7 +12,7 @@ Don't forget to include the following lines in your index.html file
 <script src="https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyAbdtKOfJeEdfvR6Q6Rg_COAadNZ8nIehA"></script>
 ```
 
-##demo
+## demo
 
 ```
 import React, {Component} from 'react';
