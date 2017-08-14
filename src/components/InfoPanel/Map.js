@@ -41,25 +41,31 @@ export default class Map extends Component {
             x = lat();
             y = lng();
             console.log(lat(), lng());
-            //TODO: change invoking callback function to edit button on state check mark
+            // TODO: change invoking callback function to edit button on state check mark
             // this.props.onChangePosition(x, y);
         }
     }
+
+
 
     /*
     change state of parent when the state of child changes
      */
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            position: {
-                lat: nextProps.lat,
-                lng: nextProps.lng
-            },
-            center: {
-                lat: nextProps.lat,
-                lng: nextProps.lng
-            },mapEditted: false
-        })
+        if(!this.state.edittable){
+            this.setState({
+                position: {
+                    lat: nextProps.lat,
+                    lng: nextProps.lng
+                },
+                center: {
+                    lat: nextProps.lat,
+                    lng: nextProps.lng
+                },
+                mapEditted: false
+            });
+        }
+
     }
 
     /*

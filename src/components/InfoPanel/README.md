@@ -4,7 +4,7 @@
 
 ## Usage:
 
-1. import InfoForm from path './components/InfoPanel' to get started
+1. import { InfoForm } from path './components/InfoPanel' or wherever you put the InfoPanel folder to get started
 
 2. specify _width_, _height_, _left_ (x-coordinate), _top_ (y-coordinate)
 

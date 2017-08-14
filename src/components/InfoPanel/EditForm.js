@@ -162,7 +162,7 @@ export default class EditForm extends React.Component {
                                 password: false,
                                 location: false,
                                 position: false
-                            }   
+                            }
                         })
                     }}
                     container={this}
