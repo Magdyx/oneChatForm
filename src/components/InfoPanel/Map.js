@@ -22,7 +22,8 @@ export default class Map extends Component {
                 lng: props.lng,
                 lat: props.lat
             },
-            edittable: false
+            edittable: false,
+            mapEditted: false,
         }
         x = props.lat;
         y = props.lng;
@@ -35,7 +36,7 @@ export default class Map extends Component {
      */
     handleMapClicked(event) {
         if(this.state.edittable) {
-            this.setState({position: event.latLng});
+            this.setState({position: event.latLng, mapEditted: true});
             const {lat, lng} = this.state.position;
             x = lat();
             y = lng();
@@ -49,14 +50,15 @@ export default class Map extends Component {
     change state of parent when the state of child changes
      */
     componentWillReceiveProps(nextProps) {
-        this.setState({position: {
-            lat: nextProps.lat,
-            lng: nextProps.lng
-        },
-        center: {
-            lat: nextProps.lat,
-            lng: nextProps.lng
-        }
+        this.setState({
+            position: {
+                lat: nextProps.lat,
+                lng: nextProps.lng
+            },
+            center: {
+                lat: nextProps.lat,
+                lng: nextProps.lng
+            },mapEditted: false
         })
     }
 
@@ -68,18 +70,28 @@ export default class Map extends Component {
         if (!this.state.edittable) {
             return (
                 <Ionicon
-                    icon="ion-checkmark-round"
-                    fontSize="25px"
-                    color="#bfbfbf"
-                    style={{position: 'relative', right: '7px', top: '7px'}}
+                    icon="ion-edit"
+                    fontSize="20px"
+                    color="white"
+                    style={{position: 'relative', right: '4px', top: '5px'}}
                 />
+
             );
-        }else{
+        }else if (this.state.mapEditted) {
             return (
                 <Ionicon
                     icon="ion-checkmark-round"
                     fontSize="25px"
                     color="#00FF00 "
+                    style={{position: 'relative', right: '7px', top: '7px'}}
+                />
+            );
+        } else {
+            return (
+                <Ionicon
+                    icon="ion-checkmark-round"
+                    fontSize="25px"
+                    color="#bfbfbf"
                     style={{position: 'relative', right: '7px', top: '7px'}}
                 />
             );
@@ -93,11 +105,12 @@ export default class Map extends Component {
     renderButton() {
         if (this.props.enableEdit) {
             return (
-                <div style={{width:this.props.width}}>
+                <div style={{ width:this.props.width }}>
                     <Button
                         size="small"
                         color="primary"
                         variant="fab"
+                        disabled={!this.state.mapEditted && this.state.edittable}
                         onClick={() => {
                             this.setState({edittable: !this.state.edittable});
                             console.log(x,y);
