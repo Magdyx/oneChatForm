@@ -124,7 +124,12 @@ export default class EditForm extends React.Component {
 
                 <Modal
                     show={this.state.show}
-                    onHide={close}
+                    onHide={() => {
+                        this.setState({
+                            branch: this.state.old_branch,
+                            show: false
+                        })
+                    }}
                     container={this}
                     animation={true}
                     aria-labelledby="contained-modal-title"
@@ -178,12 +183,6 @@ export default class EditForm extends React.Component {
 
                     <Modal.Footer>
                         <Button variant="raised" color="primary" onClick={this.refreshData.bind(this)}>Save changes</Button>
-                        <Button variant="raised" onClick={() => {
-                            this.setState({
-                                branch: this.state.old_branch,
-                                show: false
-                            })
-                        }}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
