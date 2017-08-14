@@ -6,7 +6,7 @@ export default class InfoForm2 extends Component {
     const branch = {
       name: 'Zara',
       password: 'password',
-      location: '123, Shawky St., Mostafa Kamel',
+      location: '123, Shawky St., Mostafa Kamel - sidi gabr , Alexandria , Egypt ',
       position: {
           lng: 29.91,
           lat: 31.21
