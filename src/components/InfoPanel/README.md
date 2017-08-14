@@ -1,12 +1,11 @@
 # Editable info Form
 
 
-
 ## Usage:
 
-1. import { InfoForm } from path './components/InfoPanel' or wherever you put the InfoPanel folder to get started
+1. import `{ InfoForm }` from path `'./components/InfoPanel'` or wherever you put the InfoPanel folder to get started
 
-2. specify _width_, _height_, _left_ (x-coordinate), _top_ (y-coordinate)
+2. specify `width`, `height`, `left` (x-coordinate), `top` (y-coordinate)
 
 3. bring in some branch informaiion from your database like this
 ```
@@ -44,7 +43,7 @@ Don't forget to include the following lines in your index.html file
 
 ## demo
 
-```
+```javascript 
 import React, {Component} from 'react';
 import { InfoForm } from './components/InfoPanel';
 
@@ -70,9 +69,7 @@ export default class InfoFormExample extends Component {
                 top="0"
                 branch={branch}
             />
-
         </div>
-
     );
   }
 }
