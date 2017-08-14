@@ -68,10 +68,10 @@ export default class Map extends Component {
         if (!this.state.edittable) {
             return (
                 <Ionicon
-                    icon="ion-edit"
-                    fontSize="20px"
-                    color="white"
-                    style={{position: 'relative', right: '4px', top: '5px'}}
+                    icon="ion-checkmark-round"
+                    fontSize="25px"
+                    color="#bfbfbf"
+                    style={{position: 'relative', right: '7px', top: '7px'}}
                 />
             );
         }else{
