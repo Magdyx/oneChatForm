@@ -114,11 +114,11 @@ export default class EditForm extends React.Component {
                     onClick={() => this.setState({ show: true})}
                     style={{position: 'absolute', left: this.props.xMarginButton, top: this.props.yMarginButton}}
                 >
-                    <Ionicon
-                        icon="ion-edit"
-                        fontSize="20px"
+                                      <Ionicon
+                        icon="ion-compose"
+                        fontSize="32px"
                         color="white"
-                        style={{position: 'relative', right: '4px', top: '5px'}}
+                        style={{position: 'relative', right: '8px', top: '7px'}}
                     />
                 </Button>
 
