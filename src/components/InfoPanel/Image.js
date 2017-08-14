@@ -25,8 +25,11 @@ export default class Image extends Component {
                 <Button 
                     type="button"
                     onClick={() => this.setState({ isOpen: true })}
+                    style={{background: " transparent" ,fontSize: "18"}}
                 >
+                    <u>
                     Show QR Code
+                    </u>
                 </Button>
 
                 {isOpen &&

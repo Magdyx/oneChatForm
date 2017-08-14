@@ -18,6 +18,7 @@ class LocationInput extends Component {
             <form>
                 <div style={{width: this.props.width*10, verticalAlign: "text-top"}}>
                     <label style={{
+
                                 verticalAlign: "text-top",
                                 textAlign:"left",
                                 fontSize: this.props.width/8,
@@ -33,6 +34,7 @@ class LocationInput extends Component {
                         readOnly
                         value={this.state.labelText}
                         style={{
+                            background: " transparent",
                             verticalAlign: "text-top",
                             border:"none",
                             textAlign:"left",

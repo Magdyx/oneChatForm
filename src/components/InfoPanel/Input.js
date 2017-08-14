@@ -28,6 +28,7 @@ class Input extends Component {
                     <input
                         readOnly
                         style={{
+                            background: " transparent",
                             border:"none",
                             textAlign:"left",
                             fontSize: this.props.width/8
