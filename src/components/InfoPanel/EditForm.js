@@ -21,12 +21,31 @@ export default class EditForm extends React.Component {
                 password: password,
                 location: location,
                 position: position
+            },
+            formChangedFlags: {
+                name: false,
+                password: false,
+                location: false,
+                position: false
             }
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            formChangedFlags: {
+                name: false,
+                password: false,
+                location: false,
+                position: false
+            }
+        });
+    }
+
     handleUsernameChange(event) {
         const {password, location, position} = this.state.branch;
+
+        this.state.formChangedFlags.name = true;
 
         this.setState({
             branch: {
@@ -41,6 +60,8 @@ export default class EditForm extends React.Component {
     handlePasswordChange(event) {
         const {name, location, position} = this.state.branch;
 
+        this.state.formChangedFlags.password = true;
+
         this.setState({
             branch: {
                 name: name,
@@ -53,6 +74,8 @@ export default class EditForm extends React.Component {
 
     handleLocationChange(event) {
         const {name, password, position} = this.state.branch;
+
+        this.state.formChangedFlags.location = true;
 
         this.setState({
             branch: {
@@ -70,11 +93,17 @@ export default class EditForm extends React.Component {
         return false;
     }
 
+    isFormChanged() {
+        const { name, password, location, position } = this.state.formChangedFlags;
+        return !( name || password || location || position );
+    }
+
     handlePositionChanged(x, y){
         const {name, password, location} = this.state.branch;
         console.log(x, y);
         console.log('in handle position change');
 
+        this.state.formChangedFlags.position = true;
 
         this.setState({
             branch: {
@@ -85,7 +114,7 @@ export default class EditForm extends React.Component {
                     lat: x,
                     lng: y
                 }
-            }
+            },
         });
 
         // this.props.onChangePosition(x, y);
@@ -114,11 +143,11 @@ export default class EditForm extends React.Component {
                     onClick={() => this.setState({ show: true})}
                     style={{position: 'absolute', left: this.props.xMarginButton, top: this.props.yMarginButton}}
                 >
-                                      <Ionicon
+                    <Ionicon
                         icon="ion-compose"
                         fontSize="32px"
                         color="white"
-                        style={{position: 'relative', right: '8px', top: '7px'}}
+                        style={{position: 'relative', right: '9px', top: '5px'}}
                     />
                 </Button>
 
@@ -127,7 +156,13 @@ export default class EditForm extends React.Component {
                     onHide={() => {
                         this.setState({
                             branch: this.state.old_branch,
-                            show: false
+                            show: false,
+                            formChangedFlags: {
+                                name: false,
+                                password: false,
+                                location: false,
+                                position: false
+                            }   
                         })
                     }}
                     container={this}
@@ -182,7 +217,11 @@ export default class EditForm extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="raised" color="primary" onClick={this.refreshData.bind(this)}>Save changes</Button>
+                        <Button
+                            variant="raised"
+                            color="primary"
+                            disabled={this.isFormChanged()}
+                            onClick={this.refreshData.bind(this)}>Save changes</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
