@@ -88,7 +88,7 @@ class InfoForm extends Component {
                     <div style={{
                             textAlign:"left",
                             width:this.props.width*2.8,
-                            height:this.props.height/3
+                            height:this.props.height/4
                         }}
                     >
                         <Input

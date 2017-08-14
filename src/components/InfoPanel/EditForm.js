@@ -10,6 +10,12 @@ export default class EditForm extends React.Component {
         const {name, password, location, position} = props.branch;
         this.state = {
             show: false,
+            old_branch: {
+                name: name,
+                password: password,
+                location: location,
+                position: position
+            },
             branch: {
                 name: name,
                 password: password,
@@ -58,6 +64,12 @@ export default class EditForm extends React.Component {
         });
     }
 
+    isEmpty(str){
+        if(str === '')
+            return true;
+        return false;
+    }
+
     handlePositionChanged(x, y){
         const {name, password, location} = this.state.branch;
         console.log(x, y);
@@ -82,6 +94,10 @@ export default class EditForm extends React.Component {
     refreshData(e) {
         e.preventDefault();
         const {name, password, location, position} = this.state.branch;
+        if(this.isEmpty(name) || this.isEmpty(password) || this.isEmpty(location)) {
+            return;
+        }
+        this.setState({old_branch: this.state.branch});
         this.props.onChangeBranchInfo(name, password, location, position);
         this.setState({ show: false});
     }
@@ -90,7 +106,7 @@ export default class EditForm extends React.Component {
         let close = () => this.setState({ show: false });
         const {name, password, location, position} = this.state.branch;
         return (
-            <div className="modal-container" style={{height: 200}}>
+            <div className="modal-container" style={{ height: 200 }}>
                 <Button
                     color="primary"
                     variant="fab"
@@ -162,7 +178,12 @@ export default class EditForm extends React.Component {
 
                     <Modal.Footer>
                         <Button variant="raised" color="primary" onClick={this.refreshData.bind(this)}>Save changes</Button>
-                        <Button variant="raised" onClick={close}>Close</Button>
+                        <Button variant="raised" onClick={() => {
+                            this.setState({
+                                branch: this.state.old_branch,
+                                show: false
+                            })
+                        }}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
